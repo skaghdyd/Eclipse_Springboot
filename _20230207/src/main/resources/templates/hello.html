@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<ol>
+		<th:block th:each="el, ii : ${list}">
+			<li>[[${el}]]---[[${ii.index}]]</li>
+		</th:block>
+	</ol>
+	<div th:each="el : ${list}">
+		<h4 th:text="${el}"></h4>
+	</div>
+	<h1>[[${msg}]]</h1>
+	<h1 th:text="${msg}"></h1>
+	<hr>
+	<h4>[[${list}]]</h4>
+</body>
+</html>

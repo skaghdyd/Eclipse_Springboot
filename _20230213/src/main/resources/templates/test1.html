@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/basic.html}">
+<div layout:fragment="content">
+	<h1>잘됩니다.</h1>
+	<button onclick="modalOpen()">모달OPEN</button>
+	<hr>
+	<div class="modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Modal title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body">
+					<th:block th:each="data : ${test1}">
+						<ol>
+							<li>[[${data.num}]]</li>
+							<li>[[${data.writer}]]</li>
+							<li>[[${data.title}]]</li>
+							<li>[[${data.content}]]</li>
+						</ol>
+						<hr>
+					</th:block>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn-primary savBtn">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script layout:fragment="script" th:inline="javascript">
+	function modalOpen(){
+		const modal = new bootstrap.Modal(document.querySelector(".modal"));
+		modal.show();		
+	}
+	console.log("script..................");
+	document.querySelector(".savBtn").addEventListener("click", function(e){
+		console.log("savBtn");
+	});
+</script>
